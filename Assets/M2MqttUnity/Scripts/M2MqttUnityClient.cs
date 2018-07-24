@@ -65,6 +65,7 @@ namespace M2MqttUnity
         private List<MqttMsgPublishEventArgs> frontMessageQueue = null;
         private List<MqttMsgPublishEventArgs> backMessageQueue = null;
         private bool mqttClientConnectionClosed = false;
+        private bool mqttClientConnected = false;
 
         /// <summary>
         /// Event fired when a connection is successfully estabilished
@@ -249,7 +250,9 @@ namespace M2MqttUnity
 
         private void OnMqttConnectionClosed(object sender, EventArgs e)
         {
-            mqttClientConnectionClosed = true;
+            // Set unexpected connection closed only if connected (avoid event handling in case of controlled disconnection)
+            mqttClientConnectionClosed = mqttClientConnected;
+            mqttClientConnected = false;
         }
 
         /// <summary>
@@ -311,6 +314,7 @@ namespace M2MqttUnity
                 client.ConnectionClosed += OnMqttConnectionClosed;
                 // register to message received 
                 client.MqttMsgPublishReceived += OnMqttMessageReceived;
+                mqttClientConnected = true;
                 OnConnected();
             }
             else
@@ -328,6 +332,7 @@ namespace M2MqttUnity
 
         private void CloseConnection()
         {
+            mqttClientConnected = false;
             if(client!=null)
             {
                 if (client.IsConnected)

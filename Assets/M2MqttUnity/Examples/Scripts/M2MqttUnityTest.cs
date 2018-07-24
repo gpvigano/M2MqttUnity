@@ -209,6 +209,7 @@ namespace M2MqttUnity.Examples
             {
                 if (autoTest)
                 {
+                    autoTest = false;
                     Disconnect();
                 }
             }
