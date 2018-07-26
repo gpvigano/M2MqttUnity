@@ -12,30 +12,19 @@ and the Eclipse Distribution License is available at
 
 Contributors:
    Paolo Patierno - initial API and implementation and/or initial documentation
-   ----------------------------------------------------------------------------
-
-   Giovanni Paolo Vigano' - preprocessor directives for platform dependent compilation in Unity
 */
-
-#if !(!UNITY_EDITOR&&UNITY_WSA_10_0&&!ENABLE_IL2CPP)
-using System.Threading;
 
 namespace uPLibrary.Networking.M2Mqtt
 {
     /// <summary>
-    /// Support methods fos specific framework
+    /// Supported SSL/TLS protocol versions
     /// </summary>
-    public class Fx
+    public enum MqttSslProtocols
     {
-        public static void StartThread(ThreadStart threadStart)
-        {
-            new Thread(threadStart).Start();
-        }
-
-        public static void SleepThread(int millisecondsTimeout)
-        {
-            Thread.Sleep(millisecondsTimeout);
-        }
+        None,
+        SSLv3,
+        TLSv1_0,
+        TLSv1_1,
+        TLSv1_2
     }
 }
-#endif

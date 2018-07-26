@@ -262,7 +262,7 @@ namespace M2MqttUnity
         private IEnumerator DoConnect()
         {
             // wait for the given delay
-            yield return new WaitForSecondsRealtime(connectionDelay/1000f);
+            yield return new WaitForSecondsRealtime(connectionDelay / 1000f);
             // leave some time to Unity to refresh the UI
             yield return new WaitForEndOfFrame();
 
@@ -271,10 +271,10 @@ namespace M2MqttUnity
             {
                 try
                 {
-#if ((!UNITY_EDITOR && UNITY_WSA_10_0 && !ENABLE_IL2CPP))
-                    client = new MqttClient(brokerAddress,brokerPort,isEncrypted);
+#if (!UNITY_EDITOR && UNITY_WSA_10_0 && !ENABLE_IL2CPP)
+                    client = new MqttClient(brokerAddress,brokerPort,isEncrypted, isEncrypted ? MqttSslProtocols.SSLv3 : MqttSslProtocols.None);
 #else
-                    client = new MqttClient(brokerAddress, brokerPort, isEncrypted, null);
+                    client = new MqttClient(brokerAddress, brokerPort, isEncrypted, null, null, isEncrypted ? MqttSslProtocols.SSLv3 : MqttSslProtocols.None);
                     //System.Security.Cryptography.X509Certificates.X509Certificate cert = new System.Security.Cryptography.X509Certificates.X509Certificate();
                     //client = new MqttClient(brokerAddress, brokerPort, isEncrypted, cert, null, MqttSslProtocols.TLSv1_0, MyRemoteCertificateValidationCallback);
 #endif
@@ -334,7 +334,7 @@ namespace M2MqttUnity
         private void CloseConnection()
         {
             mqttClientConnected = false;
-            if(client!=null)
+            if (client != null)
             {
                 if (client.IsConnected)
                 {
