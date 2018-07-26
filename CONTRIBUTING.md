@@ -186,6 +186,7 @@ See below for details.
 The type must be one of the following:
   * feat: A new feature
   * fix: A bug fix
+  * update: update to a newer version of M2MQTT (update(M2MQTT))
   * docs: Documentation only changes
   * refactor: A code change that neither fixes a bug or adds a feature
   * perf: A code change that improves performance
@@ -195,7 +196,7 @@ The type must be one of the following:
 ### Scope
 
 The scope could be anything specifying the place of the commit change,
-such as, `Importer`, `Loader`, `Editor`, etc...
+such as, `Example`, `Client`, etc...
 
 ### Subject
 
