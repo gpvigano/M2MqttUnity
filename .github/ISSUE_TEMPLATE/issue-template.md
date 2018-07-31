@@ -12,7 +12,7 @@ about: Generic template for issues
 
 ### Environment
 >Please specify:
-> * version of AsImpL (Github master commit hash or at least date/hour when you downloaded it)
+> * version of M2MqttUnity (Github master commit hash or at least date/hour when you downloaded it)
 > * version of Unity3D (e.g. Unity 5.4.4f1)
 
 ### Steps to reproduce
