@@ -54,7 +54,11 @@ namespace M2MqttUnity
         public int timeoutOnConnection = MqttSettings.MQTT_CONNECT_TIMEOUT;
         [Tooltip("Connect on startup")]
         public bool autoConnect = false;
-
+        [Tooltip("UserName for the MQTT broker. Keep blank if no user name is required.")]
+        public string mqttUserName = null;
+        [Tooltip("Password for the MQTT broker. Keep blank if no password is required.")]
+        public string mqttPassword = null;
+        
         /// <summary>
         /// Wrapped MQTT client
         /// </summary>
@@ -301,7 +305,7 @@ namespace M2MqttUnity
             string clientId = Guid.NewGuid().ToString();
             try
             {
-                client.Connect(clientId);
+                client.Connect(clientId, mqttUserName, mqttPassword);
             }
             catch (Exception e)
             {
