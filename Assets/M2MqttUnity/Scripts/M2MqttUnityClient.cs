@@ -41,7 +41,7 @@ namespace M2MqttUnity
     public class M2MqttUnityClient : MonoBehaviour
     {
         [Header("MQTT broker configuration")]
-        [Tooltip("IP addres or URL of host running the broker")]
+        [Tooltip("IP address or URL of the host running the broker")]
         public string brokerAddress = "localhost";
         [Tooltip("Port where the broker accepts connections")]
         public int brokerPort = 1883;
@@ -72,7 +72,7 @@ namespace M2MqttUnity
         private bool mqttClientConnected = false;
 
         /// <summary>
-        /// Event fired when a connection is successfully estabilished
+        /// Event fired when a connection is successfully established
         /// </summary>
         public event Action ConnectionSucceeded;
         /// <summary>
@@ -103,7 +103,7 @@ namespace M2MqttUnity
         }
 
         /// <summary>
-        /// Ovverride this method to take some actions before connection (e.g. display a message)
+        /// Override this method to take some actions before connection (e.g. display a message)
         /// </summary>
         protected virtual void OnConnecting()
         {
@@ -138,14 +138,14 @@ namespace M2MqttUnity
         }
 
         /// <summary>
-        /// Ovverride this method to subscribe to MQTT topics.
+        /// Override this method to subscribe to MQTT topics.
         /// </summary>
         protected virtual void SubscribeTopics()
         {
         }
 
         /// <summary>
-        /// Ovverride this method to unsubscribe to MQTT topics (they should be the same you subscribed to with SubscribeTopics() ).
+        /// Override this method to unsubscribe to MQTT topics (they should be the same you subscribed to with SubscribeTopics() ).
         /// </summary>
         protected virtual void UnsubscribeTopics()
         {
