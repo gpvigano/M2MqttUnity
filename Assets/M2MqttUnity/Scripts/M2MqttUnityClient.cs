@@ -310,7 +310,7 @@ namespace M2MqttUnity
             catch (Exception e)
             {
                 client = null;
-                Debug.LogErrorFormat("Failed to connect to {0}:{1}:\n{2}", brokerAddress, brokerPort, e.ToString());
+                Debug.LogErrorFormat("Failed to connect to {0}:{1}\n (check client parameters: encryption, address/port, username/password):\n{2}", brokerAddress, brokerPort, e.ToString());
                 OnConnectionFailed(e.Message);
                 yield break;
             }
